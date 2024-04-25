@@ -13,8 +13,9 @@ background_energy_multiplier = 2.25
 [node name="game" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.0575641, -0.864589, 0.499171, 0, 0.5, 0.866025, -0.998342, -0.049852, 0.028782, 0, 0, 0)
+transform = Transform3D(0.0575641, -0.864589, 0.499171, 0, 0.5, 0.866025, -0.998342, -0.049852, 0.0287821, 0, 0, 0)
 shadow_enabled = true
+shadow_blur = 3.516
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true

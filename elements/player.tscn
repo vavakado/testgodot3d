@@ -5,6 +5,10 @@ script/source = "extends CharacterBody3D
 
 const MAX_SPEED = 10.0
 const ACC = 10
+const SENS = 0.001
+
+func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta):
 	var dir = Vector3(Input.get_action_strength(\"D\") - Input.get_action_strength(\"A\"), 0, Input.get_action_strength(\"S\") - Input.get_action_strength(\"W\"))
@@ -14,7 +18,7 @@ func _physics_process(delta):
 	move_and_slide()
 #
 #const JUMP_VELOCITY = 4.5
-const SENS = 0.01
+
 #const ACC = 10
 #var gravity = ProjectSettings.get_setting(\"physics/3d/default_gravity\")
 #
@@ -43,6 +47,7 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		$\".\".rotate_y(-event.relative.x * SENS)
 		camera.rotate_x(-event.relative.y * SENS)
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 "
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qmodh"]
@@ -65,3 +70,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
 [node name="Camera3D" type="Camera3D" parent="cam_head"]
 fov = 108.1
 size = 6.405
+far = 100.0
