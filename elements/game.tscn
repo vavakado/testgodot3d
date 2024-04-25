@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://b32wy3fxjr6wc"]
+
+[ext_resource type="PackedScene" uid="uid://c4bnxlam4ff3i" path="res://elements/player.tscn" id="1_4ps4w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0mbid"]
+
+[sub_resource type="Environment" id="Environment_14y50"]
+background_mode = 1
+background_color = Color(0.211718, 0.161305, 0.17099, 1)
+background_energy_multiplier = 2.25
+
+[node name="game" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.797028, 0, -0.382965)
+size = Vector3(14.194, 1, 8.45563)
+material = SubResource("StandardMaterial3D_0mbid")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_4ps4w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.750336, 1.93223, -0.403336)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.662703, 6.42949, -0.298111)
+light_color = Color(0.666667, 1, 1, 1)
+light_energy = 0.914
+light_indirect_energy = 13.19
+light_volumetric_fog_energy = 13.343
+light_size = 0.534
+light_specular = 11.636
+shadow_enabled = true
+omni_range = 51.03
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_14y50")
