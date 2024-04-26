@@ -12,6 +12,10 @@ const SENS = 0.01
 
 @onready var head = $cam_head
 @onready var camera = $cam_head/Camera3D
+@onready var left_hand = $LeftHand
+@onready var right_hand = $RightHand
+var point_at_button: bool
+var point_towards: Vector3
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -22,6 +26,13 @@ func _physics_process(delta):
 	
 	velocity = velocity.lerp(dir * MAX_SPEED, ACC * delta)
 	move_and_slide()
+	if point_at_button:
+		var initial_rotation = left_hand.rotation
+		left_hand.look_at(point_towards, Vector3.UP, false)
+		left_hand.rotate_y(deg_to_rad(-90))
+		left_hand.rotation = lerp(initial_rotation, left_hand.rotation, 0.2)
+	else:
+		left_hand.rotation = lerp(left_hand.rotation, right_hand.rotation, 0.2)
 
 func _input(event):
 	if Input.is_action_just_pressed(\"ui_cancel\"):
@@ -32,6 +43,14 @@ func _unhandled_input(event):
 		$\".\".rotate_y(-event.relative.x * SENS)
 		camera.rotate_x(-event.relative.y * SENS)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+		
+func _on_button_player_entered(area):
+	point_at_button = true
+	point_towards = area.global_position
+
+
+func _on_button_player_quit():
+	point_at_button = false
 "
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qmodh"]
@@ -75,8 +94,8 @@ visible = false
 mesh = SubResource("PlaneMesh_n8026")
 surface_material_override/0 = SubResource("ShaderMaterial_847qw")
 
-[node name="RightHand" parent="." instance=ExtResource("2_pvibj")]
+[node name="LeftHand" parent="." instance=ExtResource("2_pvibj")]
 transform = Transform3D(-2.95052e-08, 0, -0.675, 0, 0.675, 0, 0.675, 0, -2.95052e-08, -0.7, 0, -0.721554)
 
-[node name="LeftHand" parent="." instance=ExtResource("2_pvibj")]
+[node name="RightHand" parent="." instance=ExtResource("2_pvibj")]
 transform = Transform3D(-2.95052e-08, 0, -0.675, 0, 0.675, 0, 0.675, 0, -2.95052e-08, 0.7, 0, -0.721554)

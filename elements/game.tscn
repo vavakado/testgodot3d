@@ -16,6 +16,7 @@ background_energy_multiplier = 2.25
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_4ps4w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38028, 2.02985, 3.76841)
+collision_mask = 3
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_14y50")
@@ -36,3 +37,6 @@ script = ExtResource("4_n263b")
 transform = Transform3D(-0.536193, 0, 4.68755e-08, 0, 0.536193, 0, -4.68755e-08, 0, -0.536193, 0.0144591, 0.124528, -0.126728)
 text = "E"
 font = SubResource("SystemFont_d385w")
+
+[connection signal="player_entered" from="Button" to="CharacterBody3D" method="_on_button_player_entered"]
+[connection signal="player_quit" from="Button" to="CharacterBody3D" method="_on_button_player_quit"]
