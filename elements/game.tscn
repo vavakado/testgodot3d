@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://b32wy3fxjr6wc"]
+[gd_scene load_steps=7 format=3 uid="uid://b32wy3fxjr6wc"]
 
 [ext_resource type="PackedScene" uid="uid://c4bnxlam4ff3i" path="res://elements/player.tscn" id="1_4ps4w"]
 [ext_resource type="PackedScene" uid="uid://by5wwlmretnem" path="res://resources/firstroom/blockbench_export.tscn" id="2_14ejj"]
 [ext_resource type="PackedScene" uid="uid://3q5mwwg3uctr" path="res://resources/Button/button.gltf" id="3_opygn"]
+[ext_resource type="Script" path="res://resources/Button/button.gd" id="4_n263b"]
 
 [sub_resource type="Environment" id="Environment_14y50"]
 background_mode = 2
 background_color = Color(0.211718, 0.161305, 0.17099, 1)
 background_energy_multiplier = 2.25
+
+[sub_resource type="SystemFont" id="SystemFont_d385w"]
 
 [node name="game" type="Node3D"]
 
@@ -23,7 +26,13 @@ omni_range = 6.744
 omni_attenuation = 0.812252
 
 [node name="Room" parent="." instance=ExtResource("2_14ejj")]
-transform = Transform3D(5.59, 0, 0, 0, 5.59, 0, 0, 0, 5.59, -1.18253, 0.742154, 3.03236)
+transform = Transform3D(6.425, 0, 0, 0, 6.425, 0, 0, 0, 6.425, -1.18253, 0.742154, 3.03236)
 
 [node name="Button" parent="." instance=ExtResource("3_opygn")]
-transform = Transform3D(-8.15217e-08, 0, 1.865, 0, 1.865, 0, -1.865, 0, -8.15217e-08, 1.20394, 2.40286, 3.3738)
+transform = Transform3D(-8.15217e-08, 0, 1.865, 0, 1.865, 0, -1.865, 0, -8.15217e-08, 1.53577, 2.40286, 3.3738)
+script = ExtResource("4_n263b")
+
+[node name="Label3D" type="Label3D" parent="Button"]
+transform = Transform3D(-0.536193, 0, 4.68755e-08, 0, 0.536193, 0, -4.68755e-08, 0, -0.536193, 0.0144591, 0.124528, -0.126728)
+text = "E"
+font = SubResource("SystemFont_d385w")
