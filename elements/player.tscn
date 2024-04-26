@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4bnxlam4ff3i"]
+[gd_scene load_steps=8 format=3 uid="uid://c4bnxlam4ff3i"]
+
+[ext_resource type="Shader" path="res://resources/pixelart_stylizer.gdshader" id="1_ivy08"]
+[ext_resource type="Script" path="res://elements/Camera3D.gd" id="1_ylxpd"]
 
 [sub_resource type="GDScript" id="GDScript_ergqu"]
 script/source = "extends CharacterBody3D
 
 const MAX_SPEED = 10.0
 const ACC = 10
-const SENS = 0.001
+const SENS = 0.01
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -55,6 +58,18 @@ height = 2.00652
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_f0yh6"]
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_n8026"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_847qw"]
+render_priority = 0
+shader = ExtResource("1_ivy08")
+shader_parameter/shadows_enabled = true
+shader_parameter/highlights_enabled = true
+shader_parameter/shadow_strength = 0.4
+shader_parameter/highlight_strength = 0.1
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = SubResource("GDScript_ergqu")
 
@@ -71,3 +86,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
 fov = 108.1
 size = 6.405
 far = 100.0
+script = ExtResource("1_ylxpd")
+
+[node name="Postprocess" type="MeshInstance3D" parent="cam_head/Camera3D"]
+transform = Transform3D(-3.38, -0.00134508, 0.000198412, 0.000451676, -0.000990099, 1.5, -0.0045459, 0.999999, 0.00148542, 0, 0, -1)
+mesh = SubResource("PlaneMesh_n8026")
+surface_material_override/0 = SubResource("ShaderMaterial_847qw")
