@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o2scv2owi5nl"
-path.s3tc="res://.godot/imported/kist_0.png-3a939081f2f50f006a3cc2ac5a5cf74b.s3tc.ctex"
+uid="uid://bbdu4iclwjfou"
+path.s3tc="res://.godot/imported/MetalDoor_0.png-d8a0ccec232b0f3454fd8563639b1e58.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "899b9e36688a0ac7d76f6c5987d00714"
+"md5": "5ea093e7f7c46bb7dda06b4a86ccb5c9"
 }
 
 [deps]
 
-source_file="res://resources/Arms/kist_0.png"
-dest_files=["res://.godot/imported/kist_0.png-3a939081f2f50f006a3cc2ac5a5cf74b.s3tc.ctex"]
+source_file="res://resources/Door/DoorVariants/MetalDoor/MetalDoor_0.png"
+dest_files=["res://.godot/imported/MetalDoor_0.png-d8a0ccec232b0f3454fd8563639b1e58.s3tc.ctex"]
 
 [params]
 

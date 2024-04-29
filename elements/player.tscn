@@ -1,57 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://c4bnxlam4ff3i"]
 
+[ext_resource type="Script" path="res://elements/player.gd" id="1_h2mig"]
 [ext_resource type="Shader" path="res://resources/Shader/pixelart_stylizer.gdshader" id="1_r4mys"]
-[ext_resource type="PackedScene" uid="uid://clj4phtx0mow3" path="res://resources/Arms/hand.tscn" id="2_pvibj"]
-
-[sub_resource type="GDScript" id="GDScript_ergqu"]
-script/source = "extends CharacterBody3D
-
-const MAX_SPEED = 10.0
-const ACC = 10
-const SENS = 0.01
-
-@onready var head = $cam_head
-@onready var camera = $cam_head/Camera3D
-@onready var left_hand = $LeftHand
-@onready var right_hand = $RightHand
-var point_at_button: bool
-var point_towards: Vector3
-
-func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
-func _physics_process(delta):
-	var dir = Vector3(Input.get_action_strength(\"D\") - Input.get_action_strength(\"A\"), 0, Input.get_action_strength(\"S\") - Input.get_action_strength(\"W\"))
-	dir = dir.rotated(Vector3.UP, transform.basis.get_euler().y)
-	
-	velocity = velocity.lerp(dir * MAX_SPEED, ACC * delta)
-	move_and_slide()
-	if point_at_button:
-		var initial_rotation = left_hand.rotation
-		left_hand.look_at(point_towards, Vector3.UP, false)
-		left_hand.rotate_y(deg_to_rad(-90))
-		left_hand.rotation = lerp(initial_rotation, left_hand.rotation, 0.2)
-	else:
-		left_hand.rotation = lerp(left_hand.rotation, right_hand.rotation, 0.2)
-
-func _input(event):
-	if Input.is_action_just_pressed(\"ui_cancel\"):
-		get_tree().quit()
-
-func _unhandled_input(event):
-	if event is InputEventMouseMotion:
-		$\".\".rotate_y(-event.relative.x * SENS)
-		camera.rotate_x(-event.relative.y * SENS)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
-		
-func _on_button_player_entered(area):
-	point_at_button = true
-	point_towards = area.global_position
-
-
-func _on_button_player_quit():
-	point_at_button = false
-"
+[ext_resource type="PackedScene" uid="uid://nfnwiqc6phbs" path="res://resources/Arms/Right/hand.tscn" id="2_gf0fw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qmodh"]
 height = 2.00652
@@ -70,8 +21,8 @@ shader_parameter/highlight_strength = 0.1
 shader_parameter/highlight_color = Color(1, 1, 1, 1)
 shader_parameter/shadow_color = Color(0, 0, 0, 1)
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
-script = SubResource("GDScript_ergqu")
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_h2mig")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_qmodh")
@@ -84,7 +35,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
 
 [node name="Camera3D" type="Camera3D" parent="cam_head"]
 current = true
-fov = 55.6
+fov = 90.4
 size = 6.405
 far = 100.0
 
@@ -94,8 +45,11 @@ visible = false
 mesh = SubResource("PlaneMesh_n8026")
 surface_material_override/0 = SubResource("ShaderMaterial_847qw")
 
-[node name="LeftHand" parent="." instance=ExtResource("2_pvibj")]
-transform = Transform3D(-2.95052e-08, 0, -0.675, 0, 0.675, 0, 0.675, 0, -2.95052e-08, -0.7, 0, -0.721554)
+[node name="RayCast3D" type="RayCast3D" parent="cam_head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -5.19, 0, 1, -2.26862e-07, 0, 0, 0.441845)
+target_position = Vector3(0, -1.655, 0)
+collide_with_areas = true
+collide_with_bodies = false
 
-[node name="RightHand" parent="." instance=ExtResource("2_pvibj")]
-transform = Transform3D(-2.95052e-08, 0, -0.675, 0, 0.675, 0, 0.675, 0, -2.95052e-08, 0.7, 0, -0.721554)
+[node name="Hand" parent="." instance=ExtResource("2_gf0fw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.7, 0.5, 0)

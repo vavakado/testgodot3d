@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dcb7syk2l3spa"
-path="res://.godot/imported/model.gltf-58abfc63b25df1d80208afc74ee9535a.scn"
+uid="uid://bslla8djny2xu"
+path="res://.godot/imported/Box.gltf-06071edafcb78ddef1e7b8308634af4b.scn"
 
 [deps]
 
-source_file="res://resources/firstroom/model.gltf"
-dest_files=["res://.godot/imported/model.gltf-58abfc63b25df1d80208afc74ee9535a.scn"]
+source_file="res://resources/Box/Box.gltf"
+dest_files=["res://.godot/imported/Box.gltf-06071edafcb78ddef1e7b8308634af4b.scn"]
 
 [params]
 
@@ -29,12 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:Node/cube2": {
-"occluder/simplification_distance": 0.1
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=3

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bm3l0xuo874ss"
-path="res://.godot/imported/arm2.gltf-649ae25355e08aa5ff34e471d38d2a34.scn"
+uid="uid://6pipafh2lk8v"
+path="res://.godot/imported/MetalDoor.gltf-bc5c8315f9bfa75097096e190527befe.scn"
 
 [deps]
 
-source_file="res://resources/Arms/arm2.gltf"
-dest_files=["res://.godot/imported/arm2.gltf-649ae25355e08aa5ff34e471d38d2a34.scn"]
+source_file="res://resources/Door/DoorVariants/MetalDoor/MetalDoor.gltf"
+dest_files=["res://.godot/imported/MetalDoor.gltf-bc5c8315f9bfa75097096e190527befe.scn"]
 
 [params]
 

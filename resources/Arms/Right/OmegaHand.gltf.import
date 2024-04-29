@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bgo6k2gf6a4yj"
-path="res://.godot/imported/kist.gltf-661af819a45935867f80a459b42cd02b.scn"
+uid="uid://juyu51a04mfv"
+path="res://.godot/imported/OmegaHand.gltf-4125316aa514e8cd6b1412f98271c1a6.scn"
 
 [deps]
 
-source_file="res://resources/Arms/kist.gltf"
-dest_files=["res://.godot/imported/kist.gltf-661af819a45935867f80a459b42cd02b.scn"]
+source_file="res://resources/Arms/Right/OmegaHand.gltf"
+dest_files=["res://.godot/imported/OmegaHand.gltf-4125316aa514e8cd6b1412f98271c1a6.scn"]
 
 [params]
 

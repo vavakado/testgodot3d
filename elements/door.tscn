@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://10ka7qs6ahi6"]
+
+[ext_resource type="Script" path="res://resources/Door/door.gd" id="1_eolta"]
+
+[node name="Door" type="Node3D"]
+script = ExtResource("1_eolta")

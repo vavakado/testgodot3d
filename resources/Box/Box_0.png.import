@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b01twb8k3mymx"
-path.s3tc="res://.godot/imported/arm1_0.png-c73ac9293dfca6a1cb3262ddc2e6ac22.s3tc.ctex"
+uid="uid://dgpyd4oq5rhng"
+path.s3tc="res://.godot/imported/Box_0.png-88376441744d5e2d7155122281de0dbd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "3529f71ac7098c4588a31f8cb6482d00"
+"md5": "cf32dd76da561707777ae8200a72c48f"
 }
 
 [deps]
 
-source_file="res://resources/Arms/arm1_0.png"
-dest_files=["res://.godot/imported/arm1_0.png-c73ac9293dfca6a1cb3262ddc2e6ac22.s3tc.ctex"]
+source_file="res://resources/Box/Box_0.png"
+dest_files=["res://.godot/imported/Box_0.png-88376441744d5e2d7155122281de0dbd.s3tc.ctex"]
 
 [params]
 

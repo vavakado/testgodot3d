@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uxjgc4dkbt54"
-path.s3tc="res://.godot/imported/model_0.png-b4b867e129ae89da11724f210a2e3e42.s3tc.ctex"
+uid="uid://d4ms1ovbyi4ry"
+path.s3tc="res://.godot/imported/OmegaHand_0.png-297f4e5eb5445e9f5d95caea259ec9c1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "28d82d798f34ed57e391658f652ae4e9"
+"md5": "4361a549b34a02e76a46efa88a727a4f"
 }
 
 [deps]
 
-source_file="res://resources/firstroom/model_0.png"
-dest_files=["res://.godot/imported/model_0.png-b4b867e129ae89da11724f210a2e3e42.s3tc.ctex"]
+source_file="res://resources/Arms/Right/OmegaHand_0.png"
+dest_files=["res://.godot/imported/OmegaHand_0.png-297f4e5eb5445e9f5d95caea259ec9c1.s3tc.ctex"]
 
 [params]
 

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://nfnwiqc6phbs"]
+
+[ext_resource type="PackedScene" uid="uid://juyu51a04mfv" path="res://resources/Arms/Right/OmegaHand.gltf" id="1_27h87"]
+
+[node name="Hand" type="Node3D"]
+
+[node name="hand" parent="." instance=ExtResource("1_27h87")]

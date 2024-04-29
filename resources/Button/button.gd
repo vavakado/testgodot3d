@@ -1,19 +1,59 @@
 extends Node3D
 
-@onready var player = $"../CharacterBody3D"
-@onready var label = $Label3D
+enum TYPE {TOGGLE, PUSH, PUSHTOTOGGLE}
 
-signal player_entered(Node3D)
-signal player_quit()
+@export var type: TYPE
+
+@onready var E = $E
+@onready var animator = $AnimationPlayer
+var in_area = false
+var button_is_pressed: bool
+
+signal button_is_pressed_signal(bool)
+signal player_in_zone(bool)
 
 func _process(delta):
-	var distance_to_player = global_position.distance_to(player.global_position)
-	if distance_to_player < 2:
-		label.show()
-		label.look_at(player.global_position, Vector3.DOWN)
-		player_entered.emit(self)
-	else:
-		label.hide()
-		player_quit.emit()
-		
-	
+	if type == TYPE.PUSH:
+		if Input.is_action_just_pressed("E") and in_area == true:
+			button_is_pressed = true
+			animator.play("Press")
+			button_is_pressed_signal.emit(true)
+		if Input.is_action_just_released("E") and in_area == true or (in_area == false and button_is_pressed == true):
+			button_is_pressed = false
+			animator.play_backwards("Press")
+			button_is_pressed_signal.emit(false)
+	if type == TYPE.PUSHTOTOGGLE:
+		if Input.is_action_just_pressed("E") and in_area == true and button_is_pressed == false:
+			button_is_pressed = true
+			animator.play("Press")
+			if animator.is_playing():
+				animator.play_backwards("Press")
+			button_is_pressed_signal.emit(true)
+		elif Input.is_action_just_pressed("E") and in_area == true and button_is_pressed == true:
+			button_is_pressed = false
+			animator.play_backwards("Press")
+			button_is_pressed_signal.emit(false)
+	if type == TYPE.TOGGLE:
+		if Input.is_action_just_pressed("E") and in_area == true and button_is_pressed == false:
+			button_is_pressed = true
+			animator.play("Press")
+			button_is_pressed_signal.emit(true)
+		elif Input.is_action_just_pressed("E") and in_area == true and button_is_pressed == true:
+			button_is_pressed = false
+			button_is_pressed_signal.emit(false)
+			animator.play_backwards("Press")
+func _on_area_3d_body_entered(body):
+	player_in_zone.emit(true)
+	in_area = true
+	E.player = body
+	E.look_at_player = true
+	E.show()
+
+func _on_area_3d_body_exited(body):
+	player_in_zone.emit(false)
+	in_area = false
+	E.look_at_player = false
+	E.hide()
+	if type == TYPE.PUSH:
+		if animator.is_playing():
+			animator.play_backwards("Press")

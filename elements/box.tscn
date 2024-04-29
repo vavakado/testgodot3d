@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://llqkwecnnrge"]
+
+[ext_resource type="PackedScene" uid="uid://bslla8djny2xu" path="res://resources/Box/Box.gltf" id="1_7cp2d"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q6vmi"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1lhbt"]
+data = PackedVector3Array(0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 0, 0.5, 0.5, 0, 0.5, 0.5, 1, -0.5, 0.5, 0, -0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 1, 0.5, -0.5, 0, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, 0, 0.5, -0.5, 0, 0.5, 0.5, 1, 0.5, 0.5, 0, 0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, 0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 1, -0.5, -0.5, 0, -0.5)
+
+[node name="RigidBody3D" type="RigidBody3D"]
+collision_layer = 0
+physics_material_override = SubResource("PhysicsMaterial_q6vmi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("ConcavePolygonShape3D_1lhbt")
+
+[node name="blockbench_export" parent="." instance=ExtResource("1_7cp2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
